@@ -8,6 +8,11 @@
 - playerctl
 - xbacklight
 - rofi
-- albert
+- albert (https://albertlauncher.github.io/docs/installing/)
 - clipit
+
+## Must Install list
+- curl
+- git
 - meld
+- google-chrome
