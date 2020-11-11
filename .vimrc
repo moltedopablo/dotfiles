@@ -211,8 +211,8 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 set nofoldenable
 
 " Gundo 
-nnoremap <F5> :GundoToggle<CR>
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+" nnoremap <F5> :GundoToggle<CR>
+" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " simplify resizing splits with alt+[hjkl]
 nnoremap <M-j> <C-w>-
