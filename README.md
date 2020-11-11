@@ -1,1 +1,13 @@
 # dotfiles
+### Requirements
+- scrot
+- xfce4-screenshooter
+- nitrogen
+- compton
+- siji
+- playerctl
+- xbacklight
+- rofi
+- albert
+- clipit
+- meld
