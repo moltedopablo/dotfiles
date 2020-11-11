@@ -16,3 +16,4 @@
 - git
 - meld
 - google-chrome
+- vim

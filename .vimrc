@@ -86,8 +86,8 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " Color scheme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-set t_Co=256
-color wombat256mod
+"set t_Co=256
+"color wombat256mod
 
 
 " Enable syntax highlighting
@@ -141,7 +141,7 @@ set noswapfile
 " mkdir -p ~/.vim/autoload ~/.vim/bundle
 " curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
+" call pathogen#infect()
 
 
 " ============================================================================
