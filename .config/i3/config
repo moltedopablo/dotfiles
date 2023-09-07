@@ -27,18 +27,18 @@ set $base0C #97e0ff
 set $base0D #97bbf7
 set $base0E #c0b7f9
 
-set $workspace1 "1: Browser"
-set $workspace2 "2: Terminals"
-set $workspace3 "3: IDE"
-set $workspace4 "4: Music"
-set $workspace5 "5: Photography"
-set $workspace6 "6: Database"
-set $workspace7 "7: Files"
-set $workspace8 "8: Kodi"
-set $workspace9 "9: Steam"
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
 
-set $monitor1 "HDMI-0"
-set $monitor2 "DVI-D-0"
+set $monitor1 "HDMI-A-0"
+set $monitor2 "eDP"
 
 workspace $workspace1 output $monitor1
 workspace $workspace2 output $monitor1
@@ -52,25 +52,29 @@ workspace $workspace9 output $monitor1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 focus_follows_mouse no
+#mouse_warping none
+#focus_on_window_activation urgent
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id terminator
+bindsym $mod+n exec --no-startup-id pcmanfm
 
 # kill focused window
 bindsym $mod+Delete kill
 bindsym XF86Tools kill
 bindsym XF86Search exec --no-startup-id xzoom
-bindsym XF86Explorer exec --no-startup-id "vlc /storage/downloads/series/Seinfeld\ Complete\ Box-set\ x264\ Seasons\ 1\ -\ 9\ +\ Extras\ DVDRip\ TSV/lista.xspf -f"
 
 # launchers $mod+p is replace for Albert right now
 #bindsym $mod+p exec --no-startup-id /home/pablo/.i3/app_launcher.sh
-bindsym Mod1+F2 exec --no-startup-id /home/pablo/.i3/command_launcher.sh
-bindsym $mod+o exec --no-startup-id /home/pablo/.i3/command_launcher.sh
+bindsym Mod1+F2 exec --no-startup-id /home/pablo/.config/i3/command_launcher.sh
+bindsym $mod+o exec --no-startup-id /home/pablo/.config/i3/command_launcher.sh
+#bindsym $mod+p exec --no-startup-id xfce4-popup-whiskermenu
+bindsym $mod+p exec --no-startup-id /home/pablo/.config/i3/app_launcher.sh
 
 # change focus
 bindsym $mod+j focus left
@@ -175,15 +179,41 @@ bindsym $mod+Shift+Mod2+KP_Home move container to workspace $workspace7
 bindsym $mod+Shift+Mod2+KP_Up move container to workspace $workspace8
 bindsym $mod+Shift+Mod2+KP_Prior move container to workspace $workspace9
 
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+
 bindsym CTRL+Mod1+Right workspace next
 bindsym CTRL+Mod1+Left workspace prev
+
+bindsym $mod+Shift+z move workspace to output next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+mode "Exit" {
+    bindsym l exec i3-msg exit
+    bindsym r exec systemctl -i reboot
+    bindsym s exec systemctl -i poweroff
+    bindsym e mode "default"; exec pkill -15 nagbar
+    bindsym Escape mode "default"; exec pkill -15 nagbar
+}
+
+bindsym $mod+Shift+e mode "Exit"; exec i3-nagbar \
+    -t warning \
+    -m '❕ SESSION EXIT OPTIONS' \
+    -B '❌ [L]ogout'    'i3-msg exit' \
+    -B '🌀 [R]estart'   'systemctl -i reboot' \
+    -B '⚡️ [S]hutdown'  'systemctl -i poweroff'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -217,16 +247,27 @@ bindsym $mod+r mode "resize"
 # lock screen
 bindsym CTRL+mod1+Delete exec ~/.config/i3/i3lock.sh
 
+
+# I set shotcuts using ACPI because xev doesn't detect the keystrokes
+# /etc/acpi/events/lenovo-vol-down     
+# /etc/acpi/events/lenovo-vol-up
+#
 # Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% 
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_04_00.6.analog-stereo +5% 
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_04_00.6.analog-stereo -5% 
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% 
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
-bindsym $mod+Prior exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym $mod+Next exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+#bindsym $mod+Prior exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+#bindsym $mod+Next exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+
+# Se seteo por ACPI porque xev no detecta esas teclas
+# /etc/acpi/events/lenovo-backlight-down
+# /etc/acpi/events/lenovo-backlight-up
+#bindsym XF86MonBrightnessUp exec --no-startup-id ligth -A 5
+#bindsym XF86MonBrightnessDown exec --no-startup-id ligth -U 5
 
 # Media player controls
 bindsym XF86AudioPlay exec "playerctl play-pause"
@@ -238,15 +279,13 @@ bindsym XF86AudioPrev exec "playerctl previous"
 #bindsym XF86HomePage exec "sleep 1 && xset -display :0.0 dpms force off"
 
 # Media player controls
-bindsym $mod+Scroll_Lock exec "playerctl play-pause"
+bindsym $mod+Insert exec "playerctl play-pause"
 bindsym $mod+End exec "playerctl next"
 bindsym $mod+Home exec "playerctl previous"
 
 bindsym Print exec --no-startup-id "xfce4-screenshooter -f"
 bindsym XF86Calculator exec --no-startup-id "gnome-calculator"
 #bindsym XF86Mail+XF86Explorer exec --no-startup-id "systemctl poweroff"
-
-bindsym XF86HomePage exec "pcmanfm /storage/downloads/series"
 
 # Widow Colours
 #                         border  background text    indicator
@@ -265,15 +304,21 @@ for_window [class="Lxappearance"] floating enable
 for_window [class="Seahorse"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="Xfce4-settings-manager"] floating enable
 for_window [class="Zenity"] floating enable
 for_window [class="Zenity"] move absolute position 1648 752
+for_window [class="Xfce4-panel" instance="xfce4-panel"] floating enable
+for_window [class="Xfce4l"] floating enable
 
 # Program Workspaces
 for_window [class="Spotify"] move to workspace $workspace4
-assign [class="google-chrome"] $workspace1
-assign [class="Kodi"] $workspace8
-assign [class="Steam"] $workspace9
-assign [title="Steam"] $workspace9
+for_window [class="TelegramDesktop"] move to workspace $workspace5
+for_window [class="Mattermost"] move to workspace $workspace5
+for_window [class="Slack"] move to workspace $workspace5
+
+no_focus [class="TelegramDesktop"]
+no_focus [class="Mattermost"]
+no_focus [class="Slack"]
 
 # The middle button over a titlebar kills the window
 bindsym --release button2 kill
@@ -285,19 +330,27 @@ bindsym --whole-window $mod+button2 kill
 bindsym button3 floating toggle
 bindsym $mod+button3 floating toggle
 
-exec --no-startup-id dropbox start -i
-exec --no-startup-id clipit
-exec --no-startup-id numlockx
-exec --no-startup-id albert
+exec --no-startup-id parcellite
 exec --no-startup-id nm-applet
 exec --no-startup-id xset -dpms s off
-exec --no-startup-id STEAM_FRAME_FORCE_CLOSE=1 steam -silent -nochatui -nofriendsui %U
-exec --no-startup-id xrandr --output $monitor1 --primary --mode 1920x1080 --pos 0x0 --output $monitor2 --mode 1920x1080 --pos 1920x0
-exec --no-startup-id compton --config .i3/compton.conf
+exec --no-startup-id cbatticon
+#exec --no-startup-id STEAM_FRAME_FORCE_CLOSE=1 steam -silent -nochatui -nofriendsui %U
+exec --no-startup-id xrandr --output eDP --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DisplayPort-0 --off
+exec --no-startup-id compton --config /home/pablo/.config/i3/compton.conf
 exec_always --no-startup-id nitrogen --restore &
-exec_always --no-startup-id /home/pablo/.config/polybar/launch.sh
+#exec_always --no-startup-id /home/pablo/.config/polybar/launch.sh
+exec --no-startup-id workrave
+exec --no-startup-id xfce4-panel --disable-wm-check &
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id dropbox start -i
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id xfsettingsd & 
+exec --no-startup-id i3-msg focus output right 
+exec --no-startup-id xsetwacom --set "Wacom Intuos S Pen Pen (0)" MapToOutput HDMI-A-0
 
 #i3-gaps
-for_window [class="^.*"] border pixel 0
-gaps inner 10
-gaps outer 20
+#for_window [class="^.*"] border pixel 0
+#gaps inner 10
+#gaps outer 10
+#gaps inner 0
+##gaps outer 0
