@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Enable Touchpad
+Comment=A small descriptive blurb about this application.
+Icon=input-touchpad-symbolic
+Exec=xinput enable "ETPS/2 Elantech Touchpad"
+Actions=
+Categories=System;X-XFCE;X-Xfce-Toplevel;
+X-XFCE-Source=file:///home/pablo/.local/share/applications/menulibre-enable-touchpad.desktop
+Path=
+Terminal=false
+StartupNotify=false

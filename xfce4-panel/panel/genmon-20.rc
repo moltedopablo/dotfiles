@@ -1,0 +1,6 @@
+Command=python3 /home/pablo/.config/i3/spotify_status.py -f '{artist}: {song}'
+UseLabel=0
+Text=(genmon)
+UpdatePeriod=1000
+Font=Sans 10
+

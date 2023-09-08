@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Panel to Laptop
+Comment=
+Exec=xfconf-query -c xfce4-panel -p /panels/panel-0/output-name -t string -s 'eDP'
+Icon=computer-laptop
+Path=
+Terminal=false
+StartupNotify=false

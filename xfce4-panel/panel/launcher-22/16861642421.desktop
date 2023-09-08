@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Home
+Comment=Apps
+Exec=/home/pablo/.config/i3/app_launcher.sh
+Icon=/home/pablo/Documents/Gaia Entrega Final/Gaia Logo/Gaia_Isotipo_RGB.svg
+Path=
+Terminal=false
+StartupNotify=false
