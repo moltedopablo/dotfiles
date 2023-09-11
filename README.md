@@ -1,5 +1,5 @@
 # 🔮 dotfiles
-These are my dotfiles for using i3 on top of XFCE and Xubuntu. i3 is known to be good friends with XFCE, this (article)[https://feeblenerd.blogspot.com/2015/11/pretty-i3-with-xfce.html] is the main inspiration for this setup: 
+These are my dotfiles for using i3 on top of XFCE and Xubuntu. i3 is known to be good friends with XFCE, this [article](https://feeblenerd.blogspot.com/2015/11/pretty-i3-with-xfce.html) is the main inspiration for this setup: 
 
 ## 1. Install packages
 These are the packages I have installed on my system. To install them run:
