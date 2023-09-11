@@ -13,5 +13,5 @@ sudo apt-get install $(cat pkglist.txt | awk '{print $1}')
 - Copy xfce4-panel/panel into ~/.config/xfce4/
 
 ## Rofi
-- Copy rofi themes into ~/.config/rofi/themes
+- Copy rofi themes into ~/.config/rofi/themes. Themes from [here](https://github.com/newmanls/rofi-themes-collection)
 - Select theme in rofi with `rofi-theme-selector`
