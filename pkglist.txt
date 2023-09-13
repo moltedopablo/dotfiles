@@ -1057,6 +1057,7 @@ libice6:amd64
 libicu-dev:amd64
 libicu70:amd64
 libicu70:i386
+libid3tag0:amd64
 libidn12:amd64
 libidn2-0:amd64
 libidn2-0:i386
@@ -1069,6 +1070,7 @@ libilmbase25:amd64
 libimage-magick-perl
 libimage-magick-q16-perl
 libimagequant0:amd64
+libimlib2:amd64
 libimobiledevice6:amd64
 libinotifytools0:amd64
 libinput-bin
@@ -2290,6 +2292,7 @@ samba-libs:amd64
 sane-airscan
 sane-utils
 sbsigntool
+scrot
 secureboot-db
 sed
 sensible-utils
