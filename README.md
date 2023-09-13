@@ -20,6 +20,6 @@ sudo apt-get install $(cat pkglist.txt | awk '{print $1}')
 - Run `./install.sh -d /home/pablo/.themes
 ## 5. Install Icon Theme
 - Clone [qogir](https://github.com/vinceliuice/Qogir-icon-theme/tree/master)
-- Install with `/install.sh -d /home/pablo/.icons`
+- Install with `./install.sh -d /home/pablo/.icons`
 ## 5. Restore .bash_history
 - Copy .bash_history from backup
