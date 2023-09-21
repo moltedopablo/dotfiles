@@ -5,7 +5,7 @@ These are my dotfiles for using i3 on top of XFCE and Xubuntu. i3 is known to be
 ## 1. Install packages
 These are the packages I have installed on my system. To install them run:
 ```bash
-sudo apt-get install $(cat pkglist.txt | awk '{print $1}')
+for i in $(cat pkglist.txt | awk '{print $1}'); do sudo apt install -y $i; done
 ```
 ## 2. i3 + XFCE
 ### xfce4-panel
