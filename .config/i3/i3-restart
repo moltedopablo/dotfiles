@@ -1,0 +1,3 @@
+#!/bin/bash
+i3-msg restart
+ps aux | grep '[l]ibi3workspaces' | awk '{print $2}' | xargs -n 1 kill
