@@ -285,7 +285,8 @@ bindsym $mod+Insert exec "playerctl play-pause"
 bindsym $mod+End exec "playerctl next"
 bindsym $mod+Home exec "playerctl previous"
 
-bindsym Print exec --no-startup-id "xfce4-screenshooter -f"
+bindsym Print exec --no-startup-id "xfce4-screenshooter -r"
+bindsym Shift+Print exec --no-startup-id "xfce4-screenshooter -w"
 bindsym XF86Calculator exec --no-startup-id "gnome-calculator"
 #bindsym XF86Mail+XF86Explorer exec --no-startup-id "systemctl poweroff"
 
@@ -351,6 +352,7 @@ exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id xfsettingsd & 
 exec --no-startup-id i3-msg focus output right 
 exec --no-startup-id xsetwacom --set "Wacom Intuos S Pen Pen (0)" MapToOutput HDMI-A-0
+exec --no-startup-id "sleep 3 && numlockx on"
 
 #i3-gaps
 #for_window [class="^.*"] border pixel 0
