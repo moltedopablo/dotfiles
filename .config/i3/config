@@ -71,11 +71,11 @@ bindsym XF86Tools kill
 bindsym XF86Search exec --no-startup-id xzoom
 
 # launchers $mod+p is replace for Albert right now
-#bindsym $mod+p exec --no-startup-id /home/pablo/.i3/app_launcher.sh
-bindsym Mod1+F2 exec --no-startup-id /home/pablo/.config/i3/command_launcher.sh
-bindsym $mod+o exec --no-startup-id /home/pablo/.config/i3/command_launcher.sh
+#bindsym $mod+p exec --no-startup-id ~/.i3/app_launcher.sh
+bindsym Mod1+F2 exec --no-startup-id ~/.config/i3/command_launcher.sh
+bindsym $mod+o exec --no-startup-id ~/.config/i3/command_launcher.sh
 #bindsym $mod+p exec --no-startup-id xfce4-popup-whiskermenu
-bindsym $mod+p exec --no-startup-id /home/pablo/.config/i3/app_launcher.sh
+bindsym $mod+p exec --no-startup-id ~/.config/i3/app_launcher.sh
 
 # change focus
 bindsym $mod+j focus left
@@ -199,7 +199,7 @@ bindsym $mod+Shift+z move workspace to output next
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 #bindsym $mod+Shift+r restart
-bindsym $mod+Shift+r exec --no-startup-id /home/pablo/.config/i3/i3-restart
+bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/i3-restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 mode "Exit" {
@@ -340,23 +340,22 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xset -dpms s off
 exec --no-startup-id cbatticon
 #exec --no-startup-id STEAM_FRAME_FORCE_CLOSE=1 steam -silent -nochatui -nofriendsui %U
-exec --no-startup-id xrandr --output eDP --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DisplayPort-0 --off
-exec --no-startup-id compton --config /home/pablo/.config/i3/compton.conf
+exec_always --no-startup-id xrandr --output eDP --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DisplayPort-0 --off
+exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
 exec_always --no-startup-id nitrogen --restore &
-#exec_always --no-startup-id /home/pablo/.config/polybar/launch.sh
 exec --no-startup-id workrave
-exec --no-startup-id xfce4-panel --disable-wm-check &
+exec_always --no-startup-id xfce4-panel --disable-wm-check &
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id dropbox start -i
 exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id xfsettingsd & 
 exec --no-startup-id i3-msg focus output right 
 exec --no-startup-id xsetwacom --set "Wacom Intuos S Pen Pen (0)" MapToOutput HDMI-A-0
+exec_always --no-startup-id ./auto_switch_panel_upon_monitor.sh
 exec --no-startup-id "sleep 3 && numlockx on"
 
-#i3-gaps
+#Gaps
+#Remove window borders
 #for_window [class="^.*"] border pixel 0
 gaps inner 10px
 gaps outer 6px
-#gaps inner 0
-#gaps outer 0
