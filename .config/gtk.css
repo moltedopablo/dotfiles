@@ -1,0 +1,24 @@
+#genmon-20 {
+   color: #1db954;
+}
+.xfce4-panel {
+   color: #b8b8b8;
+   font-family: "FiraCode Nerd Font Propo";
+   font-weight: normal;
+}
+
+.xfce4-panel.panel button.flat, .xfce4-panel.panel button.sidebar-button {
+   color: #b8b8b8;
+   font-weight: normal;
+   font-family: "FiraCode Nerd Font Propo";
+}
+
+/* i3 workspaces override */
+.xfce4-panel.panel button.urgent{
+   color:red;
+}
+
+.xfce4-panel.panel button.focused{
+   color:white;
+   font-weight: bold;
+}
