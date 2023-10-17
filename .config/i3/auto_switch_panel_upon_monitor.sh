@@ -7,7 +7,7 @@ if ! command -v xrandr &> /dev/null; then
 fi
 
 # Run xrandr and grep for connected monitors
-if xrandr | xrandr | grep -q -E "HDMI.*disconnected"; then
+if xrandr | grep -q -E "HDMI.*disconnected"; then
     ./restore_panel_to_laptop.sh
 else
     ./restore_panel_to_monitor.sh
