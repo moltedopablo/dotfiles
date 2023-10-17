@@ -287,7 +287,8 @@ bindsym $mod+Home exec "playerctl previous"
 
 bindsym Print exec --no-startup-id "xfce4-screenshooter -r"
 bindsym Shift+Print exec --no-startup-id "xfce4-screenshooter -w"
-bindsym XF86Calculator exec --no-startup-id "gnome-calculator"
+bindsym XF86Calculator exec --no-startup-id "mate-calculator"
+bindsym $mod+c exec --no-startup-id "mate-calculator"
 #bindsym XF86Mail+XF86Explorer exec --no-startup-id "systemctl poweroff"
 
 # Widow Colours
@@ -303,6 +304,7 @@ client.focused_inactive #333333 #333333 #FFFFFF #8c2828
 client.focused #000000 #000000 #FFFFFF #8c2828
 
 # Floating
+for_window [class="Wrapper-2.0"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Seahorse"] floating enable
 for_window [class="Pavucontrol"] floating enable
