@@ -322,6 +322,10 @@ for_window [class="Spotify"] move to workspace $workspace4
 for_window [class="TelegramDesktop"] move to workspace $workspace5
 for_window [class="Mattermost"] move to workspace $workspace5
 for_window [class="Slack"] move to workspace $workspace5
+for_window [class="firefox"] move to workspace $workspace1
+
+# Start tabbed
+for_window [workspace=$workspace5] layout tabbed
 
 no_focus [class="TelegramDesktop"]
 no_focus [class="Mattermost"]
@@ -344,7 +348,6 @@ exec --no-startup-id cbatticon
 #exec --no-startup-id STEAM_FRAME_FORCE_CLOSE=1 steam -silent -nochatui -nofriendsui %U
 exec_always --no-startup-id xrandr --output eDP --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DisplayPort-0 --off
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
-exec_always --no-startup-id nitrogen --restore &
 exec --no-startup-id workrave
 exec_always --no-startup-id xfce4-panel --disable-wm-check &
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -353,8 +356,10 @@ exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id xfsettingsd & 
 exec --no-startup-id i3-msg focus output right 
 exec --no-startup-id xsetwacom --set "Wacom Intuos S Pen Pen (0)" MapToOutput HDMI-A-0
-exec_always --no-startup-id ./auto_switch_panel_upon_monitor.sh
+exec_always --no-startup-id ~/.config/i3/auto_switch_panel_upon_monitor.sh
 exec --no-startup-id "sleep 3 && numlockx on"
+exec_always --no-startup-id "sleep 1 && nitrogen --restore"
+exec --no-startup-id "synclient TouchpadOff=1"
 
 #Gaps
 #Remove window borders
