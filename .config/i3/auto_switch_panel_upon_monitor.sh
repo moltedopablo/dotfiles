@@ -8,7 +8,7 @@ fi
 
 # Run xrandr and grep for connected monitors
 if xrandr | grep -q -E "HDMI.*disconnected"; then
-    ./restore_panel_to_laptop.sh
+    ~/.config/i3/restore_panel_to_laptop.sh
 else
-    ./restore_panel_to_monitor.sh
+    ~/.config/i3/restore_panel_to_monitor.sh
 fi
